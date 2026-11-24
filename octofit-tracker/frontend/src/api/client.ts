@@ -6,3 +6,10 @@ export async function getJson<T>(path: string): Promise<T> {
   if (!response.ok) throw new Error(`Request failed with ${response.status}`);
   return response.json() as Promise<T>;
 }
+
+export const endpoints = {
+  activities: '/api/activities',
+  teams: '/api/teams',
+  leaderboard: '/api/leaderboard',
+  workoutSuggestions: (email: string) => `/api/workouts/suggestions/${encodeURIComponent(email)}`,
+};
